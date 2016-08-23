@@ -1,0 +1,25 @@
+
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <div class="logo">
+    <a href="{{ site.baseurl }}/">
+      <img src="{{ site.logo | prepend: site.baseurl }}" alt="{{ site.title }}">
+      <span>{{ site.subtitle }}</span>
+    </a>
+    </div>
+    <!--<a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>-->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <!--{% for page in site.pages %}
+          {% if page.title and page.main_nav != false %}
+          <li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+          {% endif %}
+        {% endfor %}-->
+	      <li class="nav-link"><a href="{{ site.baseurl }}/posts/">Posts</a>
+	      <li class="nav-link"><a href="{{ site.baseurl }}/about/">About</a>
+      </ul>
+    </nav>
+  </div>
+</header>
