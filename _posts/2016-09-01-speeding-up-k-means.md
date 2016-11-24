@@ -6,6 +6,19 @@ author: Thomas Bühler
 teaser: /assets/kmeans/teaser.png
 ---
 
+The Avira Protection Labs maintain databases containing several hundred millions of malware samples which are used to provide up-to-date protection to our customers.
+Being able to automatically [cluster](https://en.wikipedia.org/wiki/Cluster_analysis) these huge amounts of data into meaningful groups is an essential task both for data analysis and as a preprocessing step for our machine learning engines.
+Thus, it is of crucial importance that this task can be done as fast as possible.
+
+However, in our daily work we often face the situation that standard techniques are not suitable to handle the sheer amount of data we are dealing with.
+For this reason one has to come up with ways to compute the solutions of these algorithms more efficiently.
+In this post we will talk about how to speed-up the popular [$$k$$-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering algorithm.
+We are especially interested in the case where one is dealing with a high amount of high-dimensional sparse data and the goal is to find a large number of clusters.
+This is the case at Avira, where the data consists of several thousand features extracted for our samples of malicious files.
+
+The main idea will be to come up with a way to accelerate a computationally expensive aspect of the $$k$$-means algorithm involving the repeated computation of Euclidean distances to cluster centers.
+Our goal is to decrease the computational time while guaranteeing the same results as the standard $$k$$-means algorithm.
+The following results were developed at Avira in collaboration with [University of Ulm](https://www.uni-ulm.de/en/in/institute-of-neural-information-processing/) and were recently [presented](http://jmlr.org/proceedings/papers/v48/bottesch16.pdf) at [ICML](http://icml.cc/2016/).
 
 $$
 \newcommand{\kmcost}{\mathrm{cost}}
@@ -31,24 +44,6 @@ $$
 \newcommand{\nnz}{\mathrm{nnz}}
 \newcommand{\annz}{\mathrm{annz}}
 $$
-
-
-
-The Avira Protection Labs maintain databases containing several hundred millions of malware samples which are used to provide up-to-date protection to our customers.
-Being able to automatically [cluster](https://en.wikipedia.org/wiki/Cluster_analysis) these huge amounts of data into meaningful groups is an essential task both for data analysis and as a preprocessing step for our machine learning engines.
-Thus, it is of crucial importance that this task can be done as fast as possible.
-
-However, in our daily work we often face the situation that standard techniques are not suitable to handle the sheer amount of data we are dealing with.
-For this reason one has to come up with ways to compute the solutions of these algorithms more efficiently.
-In this post we will talk about how to speed-up the popular [$$k$$-means](https://en.wikipedia.org/wiki/K-means_clustering) clustering algorithm.
-We are especially interested in the case where one is dealing with a high amount of high-dimensional sparse data and the goal is to find a large number of clusters.
-This is the case at Avira, where the data consists of several thousand features extracted for our samples of malicious files.
-
-The main idea will be to come up with a way to accelerate a computationally expensive aspect of the $$k$$-means algorithm involving the repeated computation of Euclidean distances to cluster centers.
-Our goal is to decrease the computational time while guaranteeing the same results as the standard $$k$$-means algorithm.
-The following results were developed at Avira in collaboration with [University of Ulm](https://www.uni-ulm.de/en/in/institute-of-neural-information-processing/) and were recently [presented](http://jmlr.org/proceedings/papers/v48/bottesch16.pdf) at [ICML](http://icml.cc/2016/).
-
-
 
 ## $$k$$-means clustering
 
