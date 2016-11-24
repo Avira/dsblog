@@ -3,6 +3,7 @@ layout: post
 title:  "Continuous and automatic key driver analysis of customer feedback"
 date:   2016-11-18
 author: Manuel J. A. Eugster
+teaser: /assets/cfdrivers/teaser.png
 ---
 
 In all of Avira's products, customers are able (and invited!) to provide feedback
