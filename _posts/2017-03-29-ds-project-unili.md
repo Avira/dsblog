@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "University @Avira: Predicting error-related user behavior in Avira Antivirus"
-date:   2017-02-06
+date:   2017-03-29
 author: Manuel J. A. Eugster and Michaela Beckenbach
 ---
 
